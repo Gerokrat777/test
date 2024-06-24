@@ -1,0 +1,26 @@
+from main import Student
+import unittest
+
+class TestStudent(unittest.TestCase):
+
+    def test_walk(self):
+        go = Student('Alex')
+        for _ in range(0,10):
+            go.walk()
+        self.assertEqual(50, go.distance,'Дистанции не равны [дистанция человека(объекта)] != 50')
+
+    def test_run(self):
+        run = Student('Alex')
+        for _ in range(0,10):
+            run.run()
+        self.assertEqual(100, run.distance,'Дистанции не равны [дистанция человека(объекта)] != 100')
+
+    def test_greater(self):
+        Student_1 = Student('Max')
+        Student_2 = Student('Alex')
+        for i in range(10):
+            Student_1.run()
+            Student_2.walk()
+        self.assertGreater(Student_1.distance, Student_2.distance,
+                           f'Идущий человек - {Student_2.name} должен преодолеть дистанцию меньше, '
+                           f'чем бегущий человек - {Student_1.name}')
